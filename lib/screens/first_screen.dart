@@ -82,15 +82,15 @@ class FirstScreen extends StatelessWidget {
                   shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20), // Rounded corners
                 ),
-                padding: EdgeInsets.symmetric(vertical: 15, horizontal: 30), // Button padding
+                padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 30), // Button padding
               ),
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => SecondScreen()),
+                  MaterialPageRoute(builder: (context) => const SecondScreen()),
                 );
               },
-              child: Text('Go To Second Screen'), // Button text
+              child: const Text('Go To Second Screen'), // Button text
             ),
           ],
         ),

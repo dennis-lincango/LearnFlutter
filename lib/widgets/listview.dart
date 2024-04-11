@@ -18,19 +18,19 @@ class ListTileWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-        padding:   EdgeInsets.all(5),
+        padding:   const EdgeInsets.all(5),
         child: ListTile(
           tileColor: listTileColor,
           shape: ContinuousRectangleBorder(
             borderRadius: BorderRadius.circular(10),
-            side:  BorderSide(
+            side:  const BorderSide(
                 width: 1,
                 color: Colors.blue),
           ),
           title: Text(
               title,
-              style:  TextStyle(fontSize: 20)),
-          subtitle: Text(subtitle, style:  TextStyle(fontSize: 15)),
+              style:  const TextStyle(fontSize: 20)),
+          subtitle: Text(subtitle, style:  const TextStyle(fontSize: 15)),
           leading: IconButton(
             icon: Icon(leadingIcon), onPressed: (){} ,
             color: iconColor),

@@ -5,15 +5,17 @@ import '../widgets/listview.dart';
 
 
 class SecondScreen extends StatelessWidget {
+  const SecondScreen({super.key});
+
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title:  Text('Second Screen'),
+        title:  const Text('Second Screen'),
       ),
       body: ListView(
-        padding:   EdgeInsets.all(10),
+        padding:   const EdgeInsets.all(10),
         children:  [
           ListTileWidget(
               title: "texto1",
