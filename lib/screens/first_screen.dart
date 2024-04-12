@@ -15,7 +15,6 @@ class FirstScreen extends StatelessWidget {
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
               colors: [Color.fromRGBO(68, 189, 84, 0.6), Color.fromRGBO(29, 179, 164, 1)]),
-
           border: Border.all(
             color: Colors.red,
           ),
@@ -73,8 +72,6 @@ class FirstScreen extends StatelessWidget {
                 ))),
 
             const SizedBox(height: 20),
-
-
 
             ElevatedButton(
               style: ElevatedButton.styleFrom(
