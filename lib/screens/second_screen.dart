@@ -1,8 +1,8 @@
 
 import 'package:flutter/material.dart';
+import 'package:test_2/screens/third_screen.dart';
 
 import '../widgets/listview.dart';
-
 
 class SecondScreen extends StatelessWidget {
   const SecondScreen({super.key});
@@ -39,7 +39,25 @@ class SecondScreen extends StatelessWidget {
               leadingIcon: Icons.account_box,
               trailingIcon: Icons.ac_unit,
               iconColor: Colors.green
+          ),
+
+          ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.blue.shade50, // Background color
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20), // Rounded corners
+              ),
+              padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 30), // Button padding
+            ),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const ThirdScreen()),
+              );
+            },
+            child: const Text('Go To Third Screen'), // Button text
           )
+
         ],
       ),
     );
