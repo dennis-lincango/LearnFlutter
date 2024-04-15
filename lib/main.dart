@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:test_2/config/theme/app_theme.dart';
-import 'package:test_2/screens/first_screen.dart';
+import 'package:test_2/screens/fifth_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: AppTheme(selectedColor: 0 ).theme(),
-      home: const FirstScreen(),
+      home:  FithScreen(),
     );
   }
 }
