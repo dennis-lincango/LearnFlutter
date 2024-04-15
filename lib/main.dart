@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:test_2/config/theme/app_theme.dart';
 import 'package:test_2/screens/first_screen.dart';
 
 void main() {
-
   runApp(const MyApp());
 }
 
@@ -13,10 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
+      theme: AppTheme(selectedColor: 0 ).theme(),
       home: const FirstScreen(),
     );
   }
