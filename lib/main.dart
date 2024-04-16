@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:test_2/config/theme/app_theme.dart';
+import 'package:test_2/providers/chat_provider.dart';
 import 'package:test_2/screens/fifth_screen.dart';
+import 'package:test_2/screens/fourth_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,10 +14,15 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: AppTheme(selectedColor: 0 ).theme(),
-      home:  FithScreen(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => ChatProvider()),
+      ],
+      child: MaterialApp(
+        title: 'Flutter Demo',
+        theme: AppTheme(selectedColor: 0 ).theme(),
+        home:  const FourthScreen(),
+      ),
     );
   }
 }

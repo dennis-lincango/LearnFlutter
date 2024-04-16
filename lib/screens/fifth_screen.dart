@@ -62,14 +62,14 @@ class FithScreen extends StatelessWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
+              const Text(
                 'Lorem ipsum',
                 style: TextStyle(
                   fontSize: 35.0,
                   fontWeight: FontWeight.w400,
                 ),
               ),
-              Text(
+              const Text(
                 'Lorem ipsum',
                 style: TextStyle(
                   fontSize: 20.0,
@@ -125,14 +125,14 @@ class FithScreen extends StatelessWidget {
           ),
           Container(
             child:
-                Row(crossAxisAlignment: CrossAxisAlignment.center, children: [
-              const Spacer(),
+                const Row(crossAxisAlignment: CrossAxisAlignment.center, children: [
+              Spacer(),
               Details(title: 'title1', subtitle: 'subtitle1', text: 'text1'),
-              const Spacer(),
+              Spacer(),
               Details(title: 'title2', subtitle: 'subtitle2', text: 'text2'),
-              const Spacer(),
+              Spacer(),
               Details(title: 'title3', subtitle: 'subtitle3', text: 'text3'),
-              const Spacer(),
+              Spacer(),
             ]),
           ),
           Padding(
@@ -143,9 +143,9 @@ class FithScreen extends StatelessWidget {
                 alignment: Alignment.topLeft,
                 decoration: BoxDecoration(
                   color: Colors.grey.shade300,
-                  borderRadius: BorderRadius.vertical(top: Radius.circular(30)),
+                  borderRadius: const BorderRadius.vertical(top: Radius.circular(30)),
                 ),
-                child: Text(
+                child: const Text(
                   'Specifications',
                   style: TextStyle(fontSize: 30),
                 ),
@@ -154,17 +154,17 @@ class FithScreen extends StatelessWidget {
                 decoration: BoxDecoration(
                   color: Colors.grey.shade300,
                   borderRadius:
-                      BorderRadius.vertical(bottom: Radius.circular(30)),
+                      const BorderRadius.vertical(bottom: Radius.circular(30)),
                 ),
-                child: Row(
+                child: const Row(
                   children: [
-                    const Spacer(),
+                    Spacer(),
                     Specifications(title: 'Color', subtitle: 'white'),
-                    const Spacer(),
+                    Spacer(),
                     Specifications(title: 'Year', subtitle: '2024'),
-                    const Spacer(),
+                    Spacer(),
                     Specifications(title: 'Price', subtitle: "200"),
-                    const Spacer(),
+                    Spacer(),
                   ],
                 ),
               )
@@ -175,8 +175,8 @@ class FithScreen extends StatelessWidget {
             padding: const EdgeInsets.all(27),
             child: FloatingActionButton.extended(
               onPressed: () {},
-              label: Text('Buy'),
-              icon: Icon(Icons.add_shopping_cart),
+              label: const Text('Buy'),
+              icon: const Icon(Icons.add_shopping_cart),
             ),
           ),
         ],
@@ -221,7 +221,7 @@ class _DetailsState extends State<Details> {
           ),
         ),
         child: Padding(
-          padding: EdgeInsets.all(10),
+          padding: const EdgeInsets.all(10),
           child: Column(
             children: [
               Text(
@@ -273,16 +273,16 @@ class Specifications extends StatelessWidget {
         color: Colors.white,
       ),
       child: Padding(
-        padding: EdgeInsets.all(25),
+        padding: const EdgeInsets.all(25),
         child: Column(children: [
           Text(title,
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 15.0,
                 fontWeight: FontWeight.w300,
                 color: Colors.black,
               )),
           Text(subtitle,
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 20.0,
                 fontWeight: FontWeight.w400,
                 color: Colors.black,

@@ -36,6 +36,16 @@ class _ImageBubble extends StatelessWidget {
         borderRadius: BorderRadius.circular(20),
         // child: Image.network('https://yesno.wtf/assets/no/24-159febcfd655625c38c147b65e5be565.gif',
         child: Image.network('https://picsum.photos/250/300',
-            width: size.width * 0.7, height: 150, fit: BoxFit.cover));
+            width: size.width * 0.7, height: 150,
+            fit: BoxFit.cover,
+          loadingBuilder: (context, child, loadingProgress) {
+          if(loadingProgress == null) return child;
+            return Container(
+              width: size.width * 0.7,
+              height: 150,
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+              child: const Text('Loading...'),
+            );
+          },));
   }
 }

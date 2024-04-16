@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:test_2/widgets/message_field_box.dart';
 import 'package:test_2/widgets/my_message.dart';
 import 'package:test_2/widgets/other_message.dart';
 
@@ -24,7 +25,6 @@ class FourthScreen extends StatelessWidget {
 }
 
 
-
 class _ChatView extends StatelessWidget {
 
   @override
@@ -43,7 +43,7 @@ class _ChatView extends StatelessWidget {
                 },
               )
             ),
-            const Text('Mundo')
+            MessageFieldBox(),
           ],
         ),
       ),
