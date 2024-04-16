@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:test_2/models/message.dart';
 import 'package:test_2/widgets/message_field_box.dart';
 import 'package:test_2/widgets/my_message.dart';
 import 'package:test_2/widgets/other_message.dart';
+import 'package:test_2/providers/chat_provider.dart';
 
 class FourthScreen extends StatelessWidget {
   const FourthScreen({super.key});
@@ -16,7 +19,7 @@ class FourthScreen extends StatelessWidget {
             backgroundImage: NetworkImage('https://picsum.photos/250/300'),
           ),
         ),
-          title: const Text('Fourth Screen'),
+          title: const Text('Anonymous'),
           centerTitle: false,
         ),
       body: _ChatView(),
@@ -29,21 +32,29 @@ class _ChatView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final chatProvider = context.watch<ChatProvider>();
+
     return SafeArea(
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10),
         child: Column(
           children: [
             Expanded(child: ListView.builder(
-              itemCount: 100,
+              itemCount: chatProvider.messageList.length,
                 itemBuilder: (context, index) {
-                  return (index % 2 == 0)
-                      ? const MyMessage()
-                      : const OtherMessage();
+                  // return (index % 2 == 0)
+                  //     ? const OtherMessage()
+                  //     : const MyMessage();
+                  final message = chatProvider.messageList[index];
+                  return(message.fromWho == FromWho.other)
+                      ? OtherMessage()
+                      : MyMessage(message: message);
                 },
               )
             ),
-            MessageFieldBox(),
+            MessageFieldBox(
+              onValue: chatProvider.sendMessage,
+            ),
           ],
         ),
       ),

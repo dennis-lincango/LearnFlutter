@@ -2,6 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class MessageFieldBox extends StatelessWidget {
+  final ValueChanged<String> onValue;
+
+  const MessageFieldBox({super.key, required this.onValue});
+
   @override
   Widget build(BuildContext context) {
     final textController = TextEditingController();
@@ -22,6 +26,7 @@ class MessageFieldBox extends StatelessWidget {
         onPressed: () {
           final textValue = textController.value.text;
           textController.clear();
+          onValue(textValue);
         },
       ),
     );
@@ -34,6 +39,7 @@ class MessageFieldBox extends StatelessWidget {
       onFieldSubmitted: (value) {
         textController.clear();
         focusNode.requestFocus();
+        onValue(value);
       },
     );
   }

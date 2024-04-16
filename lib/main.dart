@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:test_2/config/theme/app_theme.dart';
 import 'package:test_2/providers/chat_provider.dart';
-import 'package:test_2/screens/fifth_screen.dart';
 import 'package:test_2/screens/fourth_screen.dart';
+import 'package:test_2/screens/fifth_screen.dart';
 
-void main() {
+void main() async {
+  await ScreenUtil.ensureScreenSize();
   runApp(const MyApp());
 }
 
@@ -14,15 +16,23 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
-      providers: [
-        ChangeNotifierProvider(create: (_) => ChatProvider()),
-      ],
-      child: MaterialApp(
-        title: 'Flutter Demo',
-        theme: AppTheme(selectedColor: 0 ).theme(),
-        home:  const FourthScreen(),
-      ),
+    return ScreenUtilInit(
+      designSize: const Size(448.0, 973.3), //448.0, 973.3)
+      minTextAdapt: true,
+      splitScreenMode: true,
+      builder: (context, child) {
+        return MultiProvider(
+          providers: [
+            ChangeNotifierProvider(create: (_) => ChatProvider()),
+          ],
+          child: MaterialApp(
+            debugShowCheckedModeBanner: false,
+            title: 'Flutter Demo',
+            theme: AppTheme(selectedColor: 0).theme(),
+            home: const FourthScreen(),
+          ),
+        );
+      },
     );
   }
 }
