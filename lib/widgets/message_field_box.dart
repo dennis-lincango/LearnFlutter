@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class MessageFieldBox extends StatelessWidget {
@@ -11,7 +10,7 @@ class MessageFieldBox extends StatelessWidget {
     final textController = TextEditingController();
     final focusNode = FocusNode();
     final outlineInputBorder = UnderlineInputBorder(
-      borderSide: BorderSide(
+      borderSide: const BorderSide(
         color: Colors.transparent,
       ),
       borderRadius: BorderRadius.circular(20),

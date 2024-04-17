@@ -4,7 +4,6 @@ import 'package:provider/provider.dart';
 import 'package:test_2/config/theme/app_theme.dart';
 import 'package:test_2/providers/chat_provider.dart';
 import 'package:test_2/screens/fourth_screen.dart';
-import 'package:test_2/screens/fifth_screen.dart';
 
 void main() async {
   await ScreenUtil.ensureScreenSize();

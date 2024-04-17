@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:test_2/models/message.dart';
 
 class MyMessage extends StatelessWidget {
+
 final Message message;
+
   const MyMessage({super.key,
     required this.message});
 
@@ -19,14 +21,14 @@ final Message message;
           borderRadius: BorderRadius.circular(20),
         ),
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal:20, vertical: 10),
+          padding: const EdgeInsets.symmetric(horizontal:20, vertical: 10),
           child: Text(
             message.text,
-            style: TextStyle(color: Colors.white),
+            style: const TextStyle(color: Colors.white),
           ),
         ),
       ),
-      const SizedBox(height: 10),
+      const SizedBox(height: 5),
     ]);
   }
 }
