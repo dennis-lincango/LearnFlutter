@@ -6,8 +6,8 @@ import 'package:test_2/widgets/my_message.dart';
 import 'package:test_2/widgets/other_message.dart';
 import 'package:test_2/providers/chat_provider.dart';
 
-class FourthScreen extends StatelessWidget {
-  const FourthScreen({super.key});
+class ChatScreen extends StatelessWidget {
+  const ChatScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +26,6 @@ class FourthScreen extends StatelessWidget {
     );
   }
 }
-
 
 class _ChatView extends StatelessWidget {
 

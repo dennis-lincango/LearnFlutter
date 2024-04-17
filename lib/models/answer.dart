@@ -1,17 +1,17 @@
 import 'package:test_2/models/message.dart';
 
-class AnswerModel {
+class Answer {
   final String answer;
   final bool forced;
   final String image;
 
-  AnswerModel({
+  Answer({
     required this.answer,
     required this.forced,
     required this.image,
   });
 
-  factory AnswerModel.fromJsonMap(Map<String, dynamic> json) => AnswerModel(
+  factory Answer.fromJsonMap(Map<String, dynamic> json) => Answer(
     answer: json["answer"],
     forced: json["forced"],
     image: json["image"],

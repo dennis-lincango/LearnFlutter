@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:test_2/screens/third_screen.dart';
+import 'package:test_2/screens/drawer_screen.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import '../widgets/listview.dart';
+import '../widgets/list_tile.dart';
 
-class SecondScreen extends StatelessWidget {
-  const SecondScreen({super.key});
+class WidgetsScreen extends StatelessWidget {
+  const WidgetsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -117,7 +117,7 @@ class SecondScreen extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => const ThirdScreen()),
+                        builder: (context) => const DrawerScreen()),
                   );
                 },
                 child: const Text('Go To Third Screen'), // Button text

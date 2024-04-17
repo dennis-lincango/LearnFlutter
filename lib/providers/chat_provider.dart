@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:test_2/helpers/answer.dart';
+import 'package:test_2/helpers/get_answer.dart';
 import 'package:test_2/models/message.dart';
 
 class ChatProvider extends ChangeNotifier {
@@ -8,7 +8,7 @@ class ChatProvider extends ChangeNotifier {
 
   List<Message> messageList = [
     Message(text: 'Hola :D', fromWho: FromWho.me),
-    Message(text: 'Estás bien?', fromWho: FromWho.me),
+    Message(text: 'Cómo estás?', fromWho: FromWho.me),
   ];
 
   Future<void> sendMessage(String text) async {

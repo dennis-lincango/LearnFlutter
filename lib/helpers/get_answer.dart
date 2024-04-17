@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:test_2/models/answer_model.dart';
+import 'package:test_2/models/answer.dart';
 import 'package:test_2/models/message.dart';
 
 class GetAnswer {
@@ -7,7 +7,7 @@ class GetAnswer {
 
   Future<Message> getAnswer() async {
     final response = await _dio.get('https://yesno.wtf/api');
-    final answerModel = AnswerModel.fromJsonMap(response.data);
+    final answerModel = Answer.fromJsonMap(response.data);
     return answerModel.toMessageEntity();
   }
 }

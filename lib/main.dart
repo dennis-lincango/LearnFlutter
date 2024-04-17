@@ -3,7 +3,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:test_2/config/theme/app_theme.dart';
 import 'package:test_2/providers/chat_provider.dart';
-import 'package:test_2/screens/fourth_screen.dart';
+import 'package:test_2/screens/form_screen.dart';
+import 'package:test_2/screens/login_screen.dart';
+import 'package:test_2/screens/my_form_screen.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() async {
   await ScreenUtil.ensureScreenSize();
@@ -25,15 +28,33 @@ class MyApp extends StatelessWidget {
             ChangeNotifierProvider(create: (_) => ChatProvider()),
           ],
           child: MaterialApp(
+            localizationsDelegates: const [
+              GlobalMaterialLocalizations.delegate,
+              GlobalWidgetsLocalizations.delegate,
+              GlobalCupertinoLocalizations.delegate
+            ],
+            supportedLocales: const [
+              Locale('es', 'MX'),
+            ],
             debugShowCheckedModeBanner: false,
             title: 'Flutter Demo',
             theme: AppTheme(selectedColor: 0).theme(),
-            home: const FourthScreen(),
+            home: const MyFormScreen(),
           ),
         );
       },
     );
   }
+
+  // @override
+  // Widget build(BuildContext context) {
+  //   return MaterialApp(
+  //     title: 'Flutter Demo',
+  //     theme: AppTheme(selectedColor: 0 ).theme(),
+  //     home:  FirstScreen(),
+  //   );
+  // }
+
 }
 
 class MyHomePage extends StatefulWidget {

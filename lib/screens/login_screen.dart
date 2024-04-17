@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:test_2/screens/second_screen.dart';
+import 'package:test_2/screens/widgets_screen.dart';
 
-class FirstScreen extends StatelessWidget {
-  const FirstScreen({super.key});
+class LoginScreen extends StatelessWidget {
+  const LoginScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -84,7 +84,7 @@ class FirstScreen extends StatelessWidget {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const SecondScreen()),
+                  MaterialPageRoute(builder: (context) => const WidgetsScreen()),
                 );
               },
               child: const Text('Go To Second Screen'), // Button text

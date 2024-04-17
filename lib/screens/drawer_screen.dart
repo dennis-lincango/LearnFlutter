@@ -2,17 +2,19 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:test_2/models/Post.dart';
-import 'package:test_2/screens/first_screen.dart';
-import 'package:test_2/screens/second_screen.dart';
+import 'package:test_2/screens/responsive_screen.dart';
+import 'package:test_2/screens/login_screen.dart';
+import 'package:test_2/screens/chat_screen.dart';
+import 'package:test_2/screens/widgets_screen.dart';
 
-class ThirdScreen extends StatefulWidget {
-  const ThirdScreen({super.key});
+class DrawerScreen extends StatefulWidget {
+  const DrawerScreen({super.key});
 
   @override
-  State<ThirdScreen> createState() => _ThirdScreenState();
+  State<DrawerScreen> createState() => _DrawerScreenState();
 }
 
-class _ThirdScreenState extends State<ThirdScreen> {
+class _DrawerScreenState extends State<DrawerScreen> {
 
   // variable to call and store future list of posts
   Future<List<Post>> postsFuture = getPosts();
@@ -48,23 +50,47 @@ class _ThirdScreenState extends State<ThirdScreen> {
               leading: const Icon(
                 Icons.home,
               ),
-              title: const Text('Page 1'),
+              title: const Text('Home'),
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const FirstScreen()),
+                  MaterialPageRoute(builder: (context) => const LoginScreen()),
                 );
               },
             ),
             ListTile(
               leading: const Icon(
-                Icons.train,
+                Icons.widgets,
               ),
-              title: const Text('Page 2'),
+              title: const Text('Widgets'),
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const SecondScreen()),
+                  MaterialPageRoute(builder: (context) => const WidgetsScreen()),
+                );
+              },
+            ),
+            ListTile(
+              leading: const Icon(
+                Icons.chat,
+              ),
+              title: const Text('Chat'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const ChatScreen()),
+                );
+              },
+            ),
+            ListTile(
+              leading: const Icon(
+                Icons.format_paint,
+              ),
+              title: const Text('Responsive'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const ResponsiveScreen()),
                 );
               },
             ),
@@ -89,7 +115,9 @@ class _ThirdScreenState extends State<ThirdScreen> {
             }
           },
         ),
+
       ),
+
     );
   }
 

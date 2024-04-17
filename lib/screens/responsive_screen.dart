@@ -1,14 +1,14 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:test_2/screens/drawer_screen.dart';
 
-class FifthScreen extends StatelessWidget {
-  const FifthScreen({super.key});
+class ResponsiveScreen extends StatelessWidget {
+  const ResponsiveScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
-    print('El tamaño de la pantalla es: {$size}');
+    // final size = MediaQuery.of(context).size; //tamaño de la pantalla
 
     return Scaffold(
       appBar: AppBar(
@@ -22,7 +22,8 @@ class FifthScreen extends StatelessWidget {
           child: IconButton(
             icon: const Icon(Icons.arrow_back_ios_new_rounded),
             onPressed: () {
-              print('Botón back presionado');
+              Navigator.push(context,
+              MaterialPageRoute(builder: (context) => const DrawerScreen()));
             },
           ),
         ),
@@ -124,22 +125,20 @@ class FifthScreen extends StatelessWidget {
                 ),
               ],
             ),
-            Container(
-              child: const Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Spacer(),
-                    Details(
-                        title: 'title1', subtitle: 'subtitle1', text: 'text1'),
-                    Spacer(),
-                    Details(
-                        title: 'title2', subtitle: 'subtitle2', text: 'text2'),
-                    Spacer(),
-                    Details(
-                        title: 'title3', subtitle: 'subtitle3', text: 'text3'),
-                    Spacer(),
-                  ]),
-            ),
+            const Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Spacer(),
+                  Details(
+                      title: 'title1', subtitle: 'subtitle1', text: 'text1'),
+                  Spacer(),
+                  Details(
+                      title: 'title2', subtitle: 'subtitle2', text: 'text2'),
+                  Spacer(),
+                  Details(
+                      title: 'title3', subtitle: 'subtitle3', text: 'text3'),
+                  Spacer(),
+                ]),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 20),
               child: Column(children: [
