@@ -34,8 +34,14 @@ dependencies:
   animations: ^2.0.0
   flutter_screenutil: ^5.9.0
   feature_notifier: ^1.0.71 #Consultar la documentación
+  flutter_form_builder: ^9.2.1
+  form_builder_validators: ^9.1.0
+  intl: ^0.18.1
   flutter:
     sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+
 
 
   # The following adds the Cupertino Icons font to your application.
