@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
+import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 import 'package:test_2/config/theme/app_theme.dart';
 import 'package:test_2/providers/chat_provider.dart';
 import 'package:test_2/screens/form_screen.dart';
@@ -9,6 +10,8 @@ import 'package:test_2/screens/my_form_screen.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() async {
+  // sqfliteFfiInit();
+  // databaseFactoryOrNull = databaseFactoryFfi;
   await ScreenUtil.ensureScreenSize();
   runApp(const MyApp());
 }
