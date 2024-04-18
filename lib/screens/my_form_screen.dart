@@ -1,7 +1,13 @@
+// import 'dart:js_interop';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
-import 'package:test_2/database/database_helper.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:crypt/crypt.dart';
+
+import '../database/cloud_firestore_service.dart';
+
 
 class MyFormScreen extends StatefulWidget {
   const MyFormScreen({super.key});
@@ -17,10 +23,18 @@ class _MyFormScreenState extends State<MyFormScreen> {
   bool readOnly = false;
   bool showSegmentedControl = true;
   final _formKey = GlobalKey<FormBuilderState>();
-  bool _nameHasError = false;
-  bool _passwordHasError = false;
-  bool _emailHasError = false;
+  // bool _nameHasError = false;
+  // bool _passwordHasError = false;
+  // bool _emailHasError = false;
   void _onChanged(dynamic val) => debugPrint(val.toString());
+
+  CloudFirestoreService? service;
+
+  @override
+  void initState() {
+    service = CloudFirestoreService(FirebaseFirestore.instance);
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +56,7 @@ class _MyFormScreenState extends State<MyFormScreen> {
                     const SizedBox(height: 15),
                     FormBuilderTextField(
                       name: 'name',
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         labelText: 'Name',
                         // suffixIcon: _nameHasError
                         //     ? const Icon(Icons.error, color: Colors.red)
@@ -66,7 +80,7 @@ class _MyFormScreenState extends State<MyFormScreen> {
                     FormBuilderTextField(
                       // autovalidateMode: AutovalidateMode.onUserInteraction,
                       name: 'password',
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         labelText: 'Password',
                         // suffixIcon: _passwordHasError
                         //     ? const Icon(Icons.error, color: Colors.red)
@@ -92,8 +106,8 @@ class _MyFormScreenState extends State<MyFormScreen> {
                     ),
                     FormBuilderTextField(
                       name: 'confirmPassword',
-                      decoration: InputDecoration(
-                        labelText: 'Confirmar Contraseña',
+                      decoration: const InputDecoration(
+                        labelText: 'Confirm password',
                         // suffixIcon: _passwordHasError
                         //     ? const Icon(Icons.error, color: Colors.red)
                         //     : const Icon(Icons.check, color: Colors.green),
@@ -126,7 +140,7 @@ class _MyFormScreenState extends State<MyFormScreen> {
                     ),
                     FormBuilderTextField(
                       name: 'email',
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         labelText: 'Email',
                       ),
                       // onChanged: (val) {
@@ -171,31 +185,21 @@ class _MyFormScreenState extends State<MyFormScreen> {
                 children: <Widget>[
                   Expanded(
                     child: ElevatedButton(
-                      // onPressed: () {
-                      //   if (_formKey.currentState?.saveAndValidate() ?? false) {
-                      //     debugPrint(_formKey.currentState?.value.toString());
-                      //   } else {
-                      //     debugPrint(_formKey.currentState?.value.toString());
-                      //     debugPrint('validation failed');
-                      //   }
-                      // },
-
-                      // Dentro del onPressed
-                      onPressed: () async {
+                      onPressed: () {
                         if (_formKey.currentState?.saveAndValidate() ?? false) {
-                          Map<String, dynamic> userData = {
-                            DatabaseHelper.columnName: _formKey.currentState!.value['name'],
-                            DatabaseHelper.columnPassword: _formKey.currentState!.value['password'],
-                            DatabaseHelper.columnEmail: _formKey.currentState!.value['email'],
+                          Map<String, dynamic> user = _formKey.currentState?.value ?? {};
+                          Map<String, dynamic> filteredUser = {
+                            'name': user['name'],
+                            'email': user['email'],
+                            'password': Crypt.sha256(user['password']).toString(), // user['password'],
                           };
-                          int userId = await DatabaseHelper.instance.insertUser(userData);
-                          debugPrint('User inserted with id: $userId');
+
+                          FirebaseFirestore.instance.collection('users').add(filteredUser);
                         } else {
-                          debugPrint('Validation failed');
+                          debugPrint(_formKey.currentState?.value.toString());
+                          debugPrint('validation failed');
                         }
                       },
-
-
                       child: const Text(
                         'Submit',
                         style: TextStyle(color: Colors.black),
