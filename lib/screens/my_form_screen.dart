@@ -5,6 +5,7 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:crypt/crypt.dart';
+import 'package:test_2/screens/widgets_screen.dart';
 
 import '../database/cloud_firestore_service.dart';
 
@@ -72,7 +73,7 @@ class _MyFormScreenState extends State<MyFormScreen> {
                       // },
                       validator: FormBuilderValidators.compose([
                         FormBuilderValidators.required(),
-                        FormBuilderValidators.max(5),
+                        FormBuilderValidators.maxLength(7),
                       ]),
                       keyboardType: TextInputType.name,
                       textInputAction: TextInputAction.next,
@@ -193,8 +194,9 @@ class _MyFormScreenState extends State<MyFormScreen> {
                             'email': user['email'],
                             'password': Crypt.sha256(user['password']).toString(), // user['password'],
                           };
-
                           FirebaseFirestore.instance.collection('users').add(filteredUser);
+                          Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => const WidgetsScreen()));
                         } else {
                           debugPrint(_formKey.currentState?.value.toString());
                           debugPrint('validation failed');

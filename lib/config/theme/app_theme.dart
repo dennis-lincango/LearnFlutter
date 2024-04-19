@@ -26,3 +26,28 @@ class AppTheme {
     );
   }
 }
+
+class MyColors{
+  static final darkBlue = Color(0xFF1E1E2C);
+  static final lightBlue = Color(0xFF2D2D44);
+}
+
+class MyAppThemes {
+  static final lightTheme = ThemeData(
+    primaryColor: MyColors.lightBlue,
+    brightness: Brightness.light,
+
+  );
+
+  static final darkTheme = ThemeData(
+    primaryColor: MyColors.darkBlue,
+    brightness: Brightness.dark,
+    primaryColorLight: Colors.black,
+    primaryColorDark: Colors.black,
+    indicatorColor: Colors.white,
+    canvasColor: Colors.black,
+    colorSchemeSeed: Colors.black,
+    scaffoldBackgroundColor: Colors.black,
+  );
+
+}

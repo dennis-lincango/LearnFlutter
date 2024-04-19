@@ -1,10 +1,37 @@
 import 'package:flutter/material.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:test_2/screens/drawer_screen.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import '../widgets/list_tile.dart';
+import 'package:geolocator/geolocator.dart';
+
 
 class WidgetsScreen extends StatelessWidget {
   const WidgetsScreen({super.key});
+  final permissionCamera = Permission.camera;
+  final permissionLocation = Permission.location;
+
+
+  void locationPermissionStatus() async {
+
+    final status = await permissionLocation.request();
+    if (status == PermissionStatus.granted) {
+      final position = await Geolocator.getCurrentPosition();
+      print('Latitude: ${position.latitude}, Longitude: ${position.longitude}');
+    } else {
+      print('Location permission denied.');
+    }
+  }
+
+  void cameraPermissionStatus() async {
+
+    final status = await permissionCamera.request();
+    if (status.isGranted) {
+      print('Opening camera...');
+    } else {
+      print('Camera permission denied.');
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -22,65 +49,66 @@ class WidgetsScreen extends StatelessWidget {
           child: ListView(
             padding: const EdgeInsets.all(10),
             children: [
-              CarouselSlider(
-                items: [
-                  Container(
-                    margin: const EdgeInsets.all(8.0),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10.0),
-                      image: const DecorationImage(
-                        image: NetworkImage("https://picsum.photos/id/49/500"),
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                  ),
-                  Container(
-                    margin: const EdgeInsets.all(8.0),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10.0),
-                      image: const DecorationImage(
-                        image: NetworkImage("https://picsum.photos/id/16/500"),
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                  ),
-                  Container(
-                    margin: const EdgeInsets.all(8.0),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10.0),
-                      image: const DecorationImage(
-                        image: NetworkImage("https://picsum.photos/id/74/500"),
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                  ),
-                  Card(
-                    margin: const EdgeInsets.all(8.0),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10.0),
-                    ),
+              // CarouselSlider(
+              //   items: [
+              //     Container(
+              //       margin: const EdgeInsets.all(8.0),
+              //       decoration: BoxDecoration(
+              //         borderRadius: BorderRadius.circular(10.0),
+              //         image: const DecorationImage(
+              //           image: NetworkImage("https://picsum.photos/id/49/500"),
+              //           fit: BoxFit.cover,
+              //         ),
+              //       ),
+              //     ),
+              //     Container(
+              //       margin: const EdgeInsets.all(8.0),
+              //       decoration: BoxDecoration(
+              //         borderRadius: BorderRadius.circular(10.0),
+              //         image: const DecorationImage(
+              //           image: NetworkImage("https://picsum.photos/id/16/500"),
+              //           fit: BoxFit.cover,
+              //         ),
+              //       ),
+              //     ),
+              //     Container(
+              //       margin: const EdgeInsets.all(8.0),
+              //       decoration: BoxDecoration(
+              //         borderRadius: BorderRadius.circular(10.0),
+              //         image: const DecorationImage(
+              //           image: NetworkImage("https://picsum.photos/id/74/500"),
+              //           fit: BoxFit.cover,
+              //         ),
+              //       ),
+              //     ),
+              //     Card(
+              //       margin: const EdgeInsets.all(8.0),
+              //       shape: RoundedRectangleBorder(
+              //         borderRadius: BorderRadius.circular(10.0),
+              //       ),
+              //
+              //       child: ClipRRect(
+              //         borderRadius: BorderRadius.circular(10.0),
+              //         child: Image.network(
+              //           "https://picsum.photos/id/84/500",
+              //           fit: BoxFit.cover,
+              //         ),
+              //       ),
+              //
+              //     ),
+              //   ],
+              //   options: CarouselOptions(
+              //     height: 250.0,
+              //     enlargeCenterPage: true,
+              //     autoPlay: true,
+              //     aspectRatio: 16 / 9,
+              //     autoPlayCurve: Curves.fastOutSlowIn,
+              //     enableInfiniteScroll: true,
+              //     autoPlayAnimationDuration: const Duration(milliseconds: 800),
+              //     viewportFraction: 0.8,
+              //   ),
+              // ),
 
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(10.0),
-                      child: Image.network(
-                        "https://picsum.photos/id/84/500",
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-
-                  ),
-                ],
-                options: CarouselOptions(
-                  height: 250.0,
-                  enlargeCenterPage: true,
-                  autoPlay: true,
-                  aspectRatio: 16 / 9,
-                  autoPlayCurve: Curves.fastOutSlowIn,
-                  enableInfiniteScroll: true,
-                  autoPlayAnimationDuration: const Duration(milliseconds: 800),
-                  viewportFraction: 0.8,
-                ),
-              ),
               ListTileWidget(
                 title: "text1",
                 subtitle: "subtext1",
@@ -121,7 +149,20 @@ class WidgetsScreen extends StatelessWidget {
                   );
                 },
                 child: const Text('Go To Third Screen'), // Button text
-              )
+              ),
+
+
+              ElevatedButton(
+                onPressed: cameraPermissionStatus,
+                child: Text('Open Camera'),
+              ),
+              ElevatedButton(
+                onPressed: locationPermissionStatus,
+                child: Text('Get Location',
+                  style: Theme.of(context).brightness == Brightness.dark ? TextStyle(color: Colors.white) : TextStyle(color: Colors.black),
+                ),
+              ),
+
             ],
           ),
         ));

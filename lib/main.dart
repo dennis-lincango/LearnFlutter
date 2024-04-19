@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import 'package:test_2/config/theme/app_theme.dart';
 import 'package:test_2/providers/chat_provider.dart';
 import 'package:test_2/screens/my_form_screen.dart';
+import 'package:test_2/screens/widgets_screen.dart';
 import 'firebase_options.dart';
 
 
@@ -35,7 +36,9 @@ class MyApp extends StatelessWidget {
             debugShowCheckedModeBanner: false,
             title: 'Flutter Demo',
             theme: AppTheme(selectedColor: 0).theme(),
-            home: const MyFormScreen(),
+            darkTheme: MyAppThemes.darkTheme,
+            themeMode: ThemeMode.system,
+            home: const WidgetsScreen(),
           ),
         );
       },

@@ -44,6 +44,8 @@ dependencies:
   firebase_database: ^10.5.2
   cloud_firestore: ^4.17.0
   crypt: ^4.3.1
+  permission_handler: ^11.2.0
+  geolocator: ^11.0.0
   flutter:
     sdk: flutter
   flutter_localizations:
@@ -57,6 +59,7 @@ dependencies:
   provider: ^6.1.2
 
 
+  path: any
 dev_dependencies:
   flutter_test:
     sdk: flutter

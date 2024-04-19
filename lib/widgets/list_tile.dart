@@ -29,7 +29,7 @@ class ListTileWidget extends StatelessWidget {
           ),
           title: Text(
               title,
-              style:    const TextStyle(fontSize: 20)),
+              style:  const TextStyle(fontSize: 20)),
           subtitle: Text(subtitle, style:    const TextStyle(fontSize: 15)),
           leading: IconButton(
             icon: Icon(leadingIcon), onPressed: (){} ,
