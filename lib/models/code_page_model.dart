@@ -1,11 +1,10 @@
-
 import 'package:flutter/material.dart';
 
-class CodePage extends StatelessWidget {
+class CodePageModel extends StatelessWidget {
   final String title;
   final Widget child;
 
-  const CodePage({
+  const CodePageModel({
     super.key,
     required this.title,
     required this.child,

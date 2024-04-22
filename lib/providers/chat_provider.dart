@@ -1,20 +1,20 @@
 import 'package:flutter/cupertino.dart';
-import 'package:test_2/helpers/get_answer.dart';
-import 'package:test_2/models/message.dart';
+import 'package:test_2/services/get_answer_service.dart';
+import 'package:test_2/models/message_model.dart';
 
 class ChatProvider extends ChangeNotifier {
   final chatScrollController = ScrollController();
-  final answer = GetAnswer();
+  final answer = GetAnswerService();
 
-  List<Message> messageList = [
-    Message(text: 'Hola :D', fromWho: FromWho.me),
-    Message(text: 'Cómo estás?', fromWho: FromWho.me),
+  List<MessageModel> messageList = [
+    MessageModel(text: 'Hola :D', fromWho: FromWho.me),
+    MessageModel(text: 'Cómo estás?', fromWho: FromWho.me),
   ];
 
   Future<void> sendMessage(String text) async {
     if (text.isEmpty) return;
 
-    final newMessage = Message(text: text, fromWho: FromWho.me);
+    final newMessage = MessageModel(text: text, fromWho: FromWho.me);
     messageList.add(newMessage);
 
     if(text.endsWith('?')) {

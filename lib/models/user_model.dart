@@ -1,12 +1,12 @@
-class User{
+class UserModel{
   final int id;
   final String name;
   final String password;
   final String email;
 
-  User({required this.id, required this.name, required this.password, required this.email});
+  UserModel({required this.id, required this.name, required this.password, required this.email});
 
-  User.fromMap(Map<String, dynamic> map):
+  UserModel.fromMap(Map<String, dynamic> map):
     id = map['id'],
     name = map['name'],
     password = map['password'],

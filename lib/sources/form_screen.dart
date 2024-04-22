@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:test_2/models/code_page.dart';
+import 'package:test_2/models/code_page_model.dart';
 import 'package:test_2/sources/complete_form.dart';
 
 
@@ -8,7 +8,7 @@ class FormScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CodePage(
+    return CodePageModel(
       title: 'Flutter Form Builder',
       child: ListView(
         children: <Widget>[
@@ -19,7 +19,7 @@ class FormScreen extends StatelessWidget {
               Navigator.of(context).push(
                 MaterialPageRoute(
                   builder: (context) {
-                    return const CodePage(
+                    return const CodePageModel(
                       title: 'Complete Form',
                       child: CompleteForm(),
                     );

@@ -1,97 +1,64 @@
+﻿import 'package:firebase_auth/firebase_auth.dart' hide EmailAuthProvider;
+import 'package:firebase_ui_auth/firebase_ui_auth.dart';
+import 'package:firebase_ui_oauth_google/firebase_ui_oauth_google.dart'; // new
 import 'package:flutter/material.dart';
-import 'package:test_2/screens/widgets_screen.dart';
+import 'package:test_2/screens/home_screen.dart';
+
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-
-      body: Container(
-
-        decoration: BoxDecoration(
-          gradient: const LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              colors: [Color.fromRGBO(68, 189, 84, 0.6), Color.fromRGBO(29, 179, 164, 1)]),
-          border: Border.all(
-            color: Colors.red,
-          ),
-
-        ),
-
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-
-            const Text('Test',
-                style: TextStyle(
-                  fontSize: 30,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
-                )),
-
-            const Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(
-                      Icons.home,
-                      size: 50,
-                      color: Colors.blue,
-                    ),
-                    Text('Home'),
-                  ],
+    return StreamBuilder<User?>(
+      stream: FirebaseAuth.instance.authStateChanges(),
+      builder: (context, snapshot) {
+        if (!snapshot.hasData) {
+          return SignInScreen(
+            providers: [
+              EmailAuthProvider(),
+              GoogleProvider(clientId: "162266611818-sacvqc9nq2ar7dths62qrrq1fe8tf8b9.apps.googleusercontent.com"),  // new
+            ],
+            headerBuilder: (context, constraints, shrinkOffset) {
+              return Padding(
+                padding: const EdgeInsets.all(20),
+                child: AspectRatio(
+                  aspectRatio: 1,
+                  child: Image.asset('MY_IMAGE_300X300.png'),
                 ),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(
-                      Icons.search,
-                      size: 50,
-                      color: Colors.green,
-                    ),
-                    Text('Search'),
-                  ],
+              );
+            },
+            subtitleBuilder: (context, action) {
+              return Padding(
+                padding: const EdgeInsets.symmetric(vertical: 8.0),
+                child: action == AuthAction.signIn
+                    ? const Text('Welcome to MY_PROJECT, please sign in!')
+                    : const Text('Welcome to MY_PROJECT, please sign up!'),
+              );
+            },
+            footerBuilder: (context, action) {
+              return const Padding(
+                padding: EdgeInsets.only(top: 16),
+                child: Text(
+                  'By signing in, you agree to our terms and conditions.',
+                  style: TextStyle(color: Colors.grey),
                 ),
-              ],
-            ),
-
-            const SizedBox(height: 20),
-
-            Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: TextFormField(
-                    decoration: const InputDecoration(
-                      border: OutlineInputBorder(),
-                  fillColor: Colors.white,
-                  labelText: 'Email',
-                ))),
-
-            const SizedBox(height: 20),
-
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.blue.shade50, // Background color
-                  shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20), // Rounded corners
+              );
+            },
+            sideBuilder: (context, shrinkOffset) {
+              return Padding(
+                padding: const EdgeInsets.all(20),
+                child: AspectRatio(
+                  aspectRatio: 1,
+                  child: Image.asset('MY_IMAGE_300X300.png'),
                 ),
-                padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 30), // Button padding
-              ),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const WidgetsScreen()),
-                );
-              },
-              child: const Text('Go To Second Screen'), // Button text
-            ),
-          ],
-        ),
-      ),
+              );
+            },
+          );
+        }
+
+        return const HomeScreen();
+      },
     );
   }
 }

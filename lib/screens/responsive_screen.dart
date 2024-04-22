@@ -1,7 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:test_2/screens/drawer_screen.dart';
+import 'package:test_2/screens/home_screen.dart';
 
 class ResponsiveScreen extends StatelessWidget {
   const ResponsiveScreen({super.key});
@@ -22,8 +22,8 @@ class ResponsiveScreen extends StatelessWidget {
           child: IconButton(
             icon: const Icon(Icons.arrow_back_ios_new_rounded),
             onPressed: () {
-              Navigator.push(context,
-              MaterialPageRoute(builder: (context) => const DrawerScreen()));
+              Navigator.pop(context,
+              MaterialPageRoute(builder: (context) => const HomeScreen()));
             },
           ),
         ),

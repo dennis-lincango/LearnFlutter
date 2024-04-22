@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import '../models/message.dart';
+import '../models/message_model.dart';
 
 class OtherMessage extends StatelessWidget {
-  final Message message;
+  final MessageModel message;
 
   const OtherMessage({super.key, required this.message});
 

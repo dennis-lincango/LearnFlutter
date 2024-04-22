@@ -2,11 +2,10 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
-import 'package:test_2/config/theme/app_theme.dart';
+import 'package:test_2/themes/app_theme.dart';
 import 'package:test_2/providers/chat_provider.dart';
-import 'package:test_2/screens/my_form_screen.dart';
-import 'package:test_2/screens/widgets_screen.dart';
-import 'firebase_options.dart';
+import 'package:test_2/screens/login_screen.dart';
+import 'services/config/firebase_options.dart';
 
 
 void main() async {
@@ -34,11 +33,11 @@ class MyApp extends StatelessWidget {
           ],
           child: MaterialApp(
             debugShowCheckedModeBanner: false,
-            title: 'Flutter Demo',
+            // title: 'Flutter Demo',
             theme: AppTheme(selectedColor: 0).theme(),
-            darkTheme: MyAppThemes.darkTheme,
-            themeMode: ThemeMode.system,
-            home: const WidgetsScreen(),
+            // darkTheme: MyAppThemes.darkTheme,
+            // themeMode: ThemeMode.system,
+            home: const LoginScreen(),
           ),
         );
       },

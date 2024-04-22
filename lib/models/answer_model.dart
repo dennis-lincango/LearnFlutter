@@ -1,17 +1,17 @@
-import 'package:test_2/models/message.dart';
+import 'package:test_2/models/message_model.dart';
 
-class Answer {
+class AnswerModel {
   final String answer;
   final bool forced;
   final String image;
 
-  Answer({
+  AnswerModel({
     required this.answer,
     required this.forced,
     required this.image,
   });
 
-  factory Answer.fromJsonMap(Map<String, dynamic> json) => Answer(
+  factory AnswerModel.fromJsonMap(Map<String, dynamic> json) => AnswerModel(
     answer: json["answer"],
     forced: json["forced"],
     image: json["image"],
@@ -23,7 +23,7 @@ class Answer {
     "image": image,
   };
 
-  Message toMessageEntity() => Message(
+  MessageModel toMessageEntity() => MessageModel(
     text: answer=='yes' ? 'Si' : 'No',
     fromWho: FromWho.other,
     imageUrl: image

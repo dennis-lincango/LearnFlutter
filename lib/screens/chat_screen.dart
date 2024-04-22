@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:test_2/models/message.dart';
+import 'package:test_2/models/message_model.dart';
 import 'package:test_2/widgets/message_field_box.dart';
 import 'package:test_2/widgets/my_message.dart';
 import 'package:test_2/widgets/other_message.dart';

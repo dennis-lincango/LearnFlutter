@@ -1,11 +1,10 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
-import 'package:test_2/models/Post.dart';
+import 'package:test_2/models/song_model.dart';
 import 'package:test_2/screens/responsive_screen.dart';
-import 'package:test_2/screens/login_screen.dart';
+import 'package:test_2/sources/first_login_screen.dart';
 import 'package:test_2/screens/chat_screen.dart';
-import 'package:test_2/screens/widgets_screen.dart';
 
 class DrawerScreen extends StatefulWidget {
   const DrawerScreen({super.key});
@@ -17,14 +16,14 @@ class DrawerScreen extends StatefulWidget {
 class _DrawerScreenState extends State<DrawerScreen> {
 
   // variable to call and store future list of posts
-  Future<List<Post>> postsFuture = getPosts();
+  Future<List<SongModel>> postsFuture = getPosts();
 
   // function to fetch data from api and return future list of posts
-  static Future<List<Post>> getPosts() async {
+  static Future<List<SongModel>> getPosts() async {
     var url = Uri.parse("https://jsonplaceholder.typicode.com/albums/1/photos");
     final response = await http.get(url, headers: {"Content-Type": "application/json"});
     final List body = json.decode(response.body);
-    return body.map((e) => Post.fromJson(e)).toList();
+    return body.map((e) => SongModel.fromJson(e)).toList();
   }
 
   // build function
@@ -54,7 +53,7 @@ class _DrawerScreenState extends State<DrawerScreen> {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const LoginScreen()),
+                  MaterialPageRoute(builder: (context) => const FirstLoginScreen()),
                 );
               },
             ),
@@ -63,12 +62,12 @@ class _DrawerScreenState extends State<DrawerScreen> {
                 Icons.widgets,
               ),
               title: const Text('Widgets'),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const WidgetsScreen()),
-                );
-              },
+              // onTap: () {
+              //   Navigator.push(
+              //     context,
+              //     MaterialPageRoute(builder: (context) => const PermissionScreen()),
+              //   );
+              // },
             ),
             ListTile(
               leading: const Icon(
@@ -99,7 +98,7 @@ class _DrawerScreenState extends State<DrawerScreen> {
       ),
       body: Center(
         // FutureBuilder
-        child: FutureBuilder<List<Post>>(
+        child: FutureBuilder<List<SongModel>>(
           future: postsFuture,
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
@@ -122,7 +121,7 @@ class _DrawerScreenState extends State<DrawerScreen> {
   }
 
   // function to display fetched data on screen
-  Widget buildPosts(List<Post> posts) {
+  Widget buildPosts(List<SongModel> posts) {
     // ListView Builder to show data in a list
     return ListView.builder(
       itemCount: posts.length,
