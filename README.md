@@ -4,7 +4,9 @@ A new Flutter project.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+This project is a starting point for a Flutter application with Firebase.
+
+![image](https://github.com/user-attachments/assets/0fe8f9dc-6fe2-4f5e-86a8-6dfbd5cd1c9b)
 
 A few resources to get you started if this is your first Flutter project:
 
