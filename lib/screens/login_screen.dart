@@ -24,7 +24,7 @@ class LoginScreen extends StatelessWidget {
                 padding: const EdgeInsets.all(20),
                 child: AspectRatio(
                   aspectRatio: 1,
-                  child: Image.asset('MY_IMAGE_300X300.png'),
+                  child: Image.asset('assets/flutter.png'),
                 ),
               );
             },
@@ -50,7 +50,7 @@ class LoginScreen extends StatelessWidget {
                 padding: const EdgeInsets.all(20),
                 child: AspectRatio(
                   aspectRatio: 1,
-                  child: Image.asset('MY_IMAGE_300X300.png'),
+                  child: Image.asset('assets/flutter.png'),
                 ),
               );
             },
