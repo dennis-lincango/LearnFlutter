@@ -2,7 +2,7 @@
 
 A new Flutter project.
 
-## Autor:
+## Autor
 
 Dennis David Lincango Simbaña
 
