@@ -2,6 +2,10 @@
 
 A new Flutter project.
 
+## Autor
+
+Dennis David Lincango Simbaña
+
 ## Getting Started
 
 This project is a starting point for a Flutter application with Firebase.
