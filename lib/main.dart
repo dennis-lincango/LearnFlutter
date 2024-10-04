@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
           ],
           child: MaterialApp(
             debugShowCheckedModeBanner: false,
-            // title: 'Flutter Demo',
+            title: 'Learn Flutter',
             theme: AppTheme(selectedColor: 0).theme(),
             // darkTheme: MyAppThemes.darkTheme,
             // themeMode: ThemeMode.system,
